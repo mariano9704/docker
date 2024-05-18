@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | \
 php -- --install-dir=/usr/bin --filename=composer
 
-RUN groupadd --gid 1000 appuser \
-    && useradd --uid 1000 -g appuser \
+RUN groupadd --gid 0 appuser \
+    && useradd --uid 0 -g appuser \
     -G www-data,root --shell /bin/bash \
     --create-home appuser
 
