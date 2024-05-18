@@ -28,7 +28,7 @@ services:
       - db
     networks:
       - zdsnet
-      - bridge
+    network_mode: bridge
 
   db:
     image: registry.docker.ir/mariadb:10.6
