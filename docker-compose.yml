@@ -11,7 +11,7 @@ services:
       - db
 
   web:
-    image: nginx
+    image: registry.docker.ir/nginx
     working_dir: /var/www/html
     restart: always
     volumes:
@@ -24,7 +24,7 @@ services:
       - db
 
   db:
-    image: mariadb:10.6
+    image: registry.docker.ir/mariadb:10.6
     restart: always
     volumes:
       - ./docker_config/database:/var/lib/mysql
@@ -35,7 +35,7 @@ services:
       - MYSQL_USER=zd
 
   redis:
-    image: redis
+    image: registry.docker.ir/redis
     restart: always
     volumes:
       - ./docker_config/redisdata:/data
@@ -44,7 +44,7 @@ services:
   phpmyadmin:
     depends_on:
       - db
-    image: phpmyadmin
+    image: registry.docker.ir/phpmyadmin
     restart: always
     environment:
       PMA_HOST: db

@@ -1,4 +1,4 @@
-FROM php:8.3.7-fpm
+FROM registry.docker.ir/php:8.3.7-fpm
 
 WORKDIR /var/www/html
 
