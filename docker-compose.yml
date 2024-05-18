@@ -62,7 +62,6 @@ services:
     container_name: zds-supervisor
     volumes:
       - ./:/var/www/html
-      - ./docker_config/supervisor.conf:/etc/supervisor.conf
     depends_on:
       - db
       - redis

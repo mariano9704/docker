@@ -30,4 +30,4 @@ COPY ./docker_config/php/opcache.ini $PHP_INI_DIR/conf.d
 
 #ADD ./docker_config/supervisor.conf /etc/
 
-CMD ["supervisord", "-c", "/etc/supervisord.conf"]
+CMD ["supervisord", "-c", "/var/www/html/docker_config/supervisor.conf"]
