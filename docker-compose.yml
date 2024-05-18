@@ -10,6 +10,8 @@ services:
       - ./:/var/www/html
     depends_on:
       - db
+    networks:
+      - zdsnet
 
   web:
     image: registry.docker.ir/nginx
@@ -24,6 +26,9 @@ services:
     depends_on:
       - php
       - db
+    networks:
+      - zdsnet
+      - bridge
 
   db:
     image: registry.docker.ir/mariadb:10.6
@@ -36,6 +41,8 @@ services:
       - MYSQL_PASSWORD=3Lb0LLV6A5y4
       - MYSQL_DATABASE=zd
       - MYSQL_USER=zd
+    networks:
+      - zdsnet
 
   redis:
     image: registry.docker.ir/redis
@@ -43,6 +50,8 @@ services:
     restart: always
     volumes:
       - ./docker_config/redisdata:/data
+    networks:
+      - zdsnet
     
   # phpmyadmin
   phpmyadmin:
@@ -54,6 +63,8 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: 3Lb0LLV6A5y4
+    networks:
+      - zdsnet
   
   supervisor:
     build:
@@ -65,3 +76,13 @@ services:
     depends_on:
       - db
       - redis
+    networks:
+      - zdsnet
+
+  networks:
+    zdsnet:
+      name: zdsnet
+      driver: bridge
+    
+    bridge:
+      name: bridge
