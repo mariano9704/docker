@@ -85,4 +85,3 @@ services:
       driver: bridge
     
     bridge:
-      name: bridge
