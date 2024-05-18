@@ -49,3 +49,13 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: 3Lb0LLV6A5y4
+  
+  horizon:
+    build:
+      context: .
+      dockerfile: horizon.Dockerfile
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+      - redis
