@@ -37,10 +37,6 @@ services:
     restart: always
     volumes:
       - ./docker_config/redisdata:/data
-    healthcheck:
-      test: [ "CMD", "redis-cli", "ping" ]
-      retries: 3
-      timeout: 5s
     
   # phpmyadmin
   phpmyadmin:
