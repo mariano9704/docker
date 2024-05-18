@@ -31,3 +31,11 @@ services:
       - MYSQL_PASSWORD=3Lb0LLV6A5y4
       - MYSQL_DATABASE=zd
       - MYSQL_USER=zd
+
+  node:
+    image: node:12
+    user: node
+    volumes:
+      - ./:/assets
+    command: npm run build
+    
