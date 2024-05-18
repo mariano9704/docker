@@ -32,10 +32,7 @@ services:
       - MYSQL_DATABASE=zd
       - MYSQL_USER=zd
 
-  node:
-    image: node:12
-    user: node
+  redis:
+    image: redis
     volumes:
-      - ./:/assets
-    command: npm run build
-    
+      - ./docker_config/redisdata:/data
