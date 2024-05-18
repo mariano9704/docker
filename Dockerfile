@@ -19,6 +19,10 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | \
 php -- --install-dir=/usr/bin --filename=composer
 
+#Installing node 12.x
+RUN curl -sL https://deb.nodesource.com/setup_12.x| bash -
+RUN apt-get install -y nodejs
+
 RUN mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 COPY ./docker_config/php/opcache.ini $PHP_INI_DIR/conf.d
 
