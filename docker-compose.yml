@@ -83,5 +83,3 @@ services:
     zdsnet:
       name: zdsnet
       driver: bridge
-    
-    bridge:
