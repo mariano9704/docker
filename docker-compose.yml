@@ -79,13 +79,13 @@ services:
     networks:
       - zdsnet
 
-  networks:
-    zdsnet:
-      name: zdsnet
-      ipam:
-        driver: default
-        config:
-          - subnet: '	172.20.0.0/24'
-
-    bridge:
+networks:
+  zdsnet:
+    name: zdsnet
+    ipam:
       driver: default
+      config:
+       - subnet: '172.20.0.0/24'
+      
+  bridge:
+    driver: bridge
