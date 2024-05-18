@@ -12,12 +12,15 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install zip pdo pdo_mysql \
+    && docker-php-ext-install zip pdo pdo_mysql opcache \
     && pecl install -o -f redis \
     && docker-php-ext-enable redis
 
 RUN curl -sS https://getcomposer.org/installer | \
 php -- --install-dir=/usr/bin --filename=composer
+
+RUN mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
+RUN mv .docker_config/php/opencache.ini $PHP_INI_DIR/conf.d
 
 RUN groupadd --gid 1000 appuser \
     && useradd --uid 1000 -g appuser \
