@@ -2,6 +2,7 @@ version: '3'
 
 services:
   php:
+    container_name: zds-php
     build:
       context: .
     restart: always
@@ -12,6 +13,7 @@ services:
 
   web:
     image: registry.docker.ir/nginx
+    container_name: zds-nginx
     working_dir: /var/www/html
     restart: always
     volumes:
@@ -25,6 +27,7 @@ services:
 
   db:
     image: registry.docker.ir/mariadb:10.6
+    container_name: zds-db
     restart: always
     volumes:
       - ./docker_config/database:/var/lib/mysql
@@ -36,6 +39,7 @@ services:
 
   redis:
     image: registry.docker.ir/redis
+    container_name: zds-redis
     restart: always
     volumes:
       - ./docker_config/redisdata:/data
@@ -46,14 +50,16 @@ services:
       - db
     image: registry.docker.ir/phpmyadmin
     restart: always
+    container_name: zds-phpmyadmin
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: 3Lb0LLV6A5y4
   
-  horizon:
+  supervisor:
     build:
       context: .
-      dockerfile: horizon.Dockerfile
+      dockerfile: supervisor.Dockerfile
+    container_name: zds-supervisor
     volumes:
       - ./:/var/www/html
     depends_on:
