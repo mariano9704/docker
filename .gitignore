@@ -20,3 +20,5 @@ yarn-error.log
 /.vscode
 /docker_config/database
 /docker_config/redisdata
+supervisord.log
+supervisord.pid
