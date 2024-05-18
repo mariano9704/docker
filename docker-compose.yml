@@ -6,7 +6,7 @@ services:
       context: .
     restart: always
     volumes:
-      - /Volumes/Datos/Proyectos/docker:/var/www/html
+      - ./:/var/www/html
     depends_on:
       - db
 
