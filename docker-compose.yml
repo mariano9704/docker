@@ -9,8 +9,6 @@ services:
       - /Volumes/Datos/Proyectos/docker:/var/www/html
     depends_on:
       - db
-    networks:
-      - zdsnet
 
   web:
     image: nginx
@@ -22,9 +20,6 @@ services:
     depends_on:
       - php
       - db
-    networks:
-      - bridge
-      - zdsnet
 
   db:
     image: mariadb:10.6
@@ -36,9 +31,3 @@ services:
       - MYSQL_PASSWORD="${DB_PASSWORD}"
       - MYSQL_DATABASE="${DB_DATABASE}"
       - MYSQL_USER="${DB_USERNAME}"
-    networks:
-      - zdsnet
-
-  networks:
-    zdsnet:
-      driver: bridge
