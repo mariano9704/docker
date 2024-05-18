@@ -20,7 +20,7 @@ RUN curl -sS https://getcomposer.org/installer | \
 php -- --install-dir=/usr/bin --filename=composer
 
 RUN mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
-RUN mv .docker_config/php/opcache.ini $PHP_INI_DIR/conf.d
+RUN mv ./docker_config/php/opcache.ini $PHP_INI_DIR/conf.d
 
 RUN groupadd --gid 1000 appuser \
     && useradd --uid 1000 -g appuser \
