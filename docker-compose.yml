@@ -28,7 +28,6 @@ services:
       - db
     networks:
       - zdsnet
-      - default
 
   db:
     image: registry.docker.ir/mariadb:10.6
@@ -86,3 +85,4 @@ networks:
       driver: default
       config:
        - subnet: '172.20.0.0/24'
+       - gateway: '172.20.0.1'
