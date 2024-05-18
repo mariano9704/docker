@@ -10,7 +10,7 @@ services:
     depends_on:
       - db
     networks:
-      - zds_net
+      - zdsnet
 
   web:
     image: nginx
@@ -24,7 +24,7 @@ services:
       - db
     networks:
       - bridge
-      - zds_net
+      - zdsnet
 
   db:
     image: mariadb:10.6
@@ -37,8 +37,8 @@ services:
       - MYSQL_DATABASE="${DB_DATABASE}"
       - MYSQL_USER="${DB_USERNAME}"
     networks:
-      - zds_net
+      - zdsnet
 
   networks:
-    zds_net:
+    zdsnet:
       driver: bridge
