@@ -26,9 +26,5 @@ RUN apt-get install -y nodejs
 RUN mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 COPY ./docker_config/php/opcache.ini $PHP_INI_DIR/conf.d
 
-RUN groupadd --gid 1000 appuser \
-    && useradd --uid 1000 -g appuser \
-    -G www-data,root --shell /bin/bash \
-    --create-home appuser
-
-USER appuser
+EXPOSE 9000
+CMD ["php-fpm"]
