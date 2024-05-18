@@ -28,6 +28,6 @@ RUN curl -sS https://getcomposer.org/installer | \
 RUN mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 COPY ./docker_config/php/opcache.ini $PHP_INI_DIR/conf.d
 
-ADD .docker_config/supervisor.conf /etc/
+ADD ./docker_config/supervisor.conf /etc/
 
 CMD ["supervisord", "-c", "/etc/supervisord.conf"]
